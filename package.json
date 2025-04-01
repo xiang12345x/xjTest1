@@ -5,10 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "publish": "ng build --configuration production --base-href 'https://xiang12345x.github.io/xjTest1/'",
+    "deploy": "ng build --configuration production --base-href /xjTest1/ && cd docs && (rm -rf .git || rmdir /s /q .git) && git init && git add . && git commit -m \"Deploy\" && git branch -M main && git push -f git@github.com:xiang12345x/xjTest1.git main:gh-pages || echo \"Error: 部署失败，请检查网络和权限\"",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "online": "npx angular-cli gh-pages --dir=dist/mini-program"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +32,7 @@
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
