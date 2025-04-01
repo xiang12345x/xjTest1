@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+// 在SCSS中，使用 @import 来导入其他样式文件，并且语法上不需要 {
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+html,
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+// 默认主题
+:root {
+    --primary-color: #6973b8;
+    --background-color: #6973b8;
+    --text-color: #fff;
+}
+
+// 紫色主题
+[data-theme='purple'] {
+    --primary-color: #6973b8;
+    --primary-color-minor: #6973b8;
+}
+
+// TODO: 100%容器
+.view {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.view_scroll {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.pd_10 {
+    padding: 10px;
+}
+.pd_20 {
+    padding: 20px;
+}
