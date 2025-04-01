@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --configuration production --base-href /xjTest1/ && cd docs && (rm -rf .git || rmdir /s /q .git) && git init && git add . && git commit -m \"Deploy\" && git branch -M main && git push -f git@github.com:xiang12345x/xjTest1.git main:gh-pages || echo \"Error: 部署失败，请检查网络和权限\"",
+    "deploy": "ng build --configuration production --base-href /xjTest1/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

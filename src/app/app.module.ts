@@ -16,8 +16,27 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import {
+    IdcardTwoTone,
+    AccountBookTwoTone,
+    AppstoreTwoTone,
+    AudioTwoTone,
+    BookTwoTone,
+    CameraTwoTone,
+} from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
 
 registerLocaleData(zh);
+
+const icons: IconDefinition[] = [
+    IdcardTwoTone,
+    AccountBookTwoTone,
+    AppstoreTwoTone,
+    AudioTwoTone,
+    BookTwoTone,
+    CameraTwoTone,
+];
 
 @NgModule({
     declarations: [AppComponent],
@@ -30,6 +49,7 @@ registerLocaleData(zh);
         NzMessageModule,
         NzModalModule,
         NzNotificationModule,
+        NzIconModule.forRoot(icons),
     ],
     providers: [
         { provide: NZ_I18N, useValue: zh_CN },

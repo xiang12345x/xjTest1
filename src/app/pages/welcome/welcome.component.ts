@@ -110,7 +110,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         // 注册中国地图GeoJSON数据
-        fetch('/assets/data/sichuan.json')
+        fetch('assets/data/sichuan.json')
             .then(response => response.json())
             .then(sichuanJson => {
                 // 确保数据格式正确后再注册
