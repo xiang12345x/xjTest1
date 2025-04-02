@@ -24,6 +24,8 @@ import {
     AudioTwoTone,
     BookTwoTone,
     CameraTwoTone,
+    UserOutline,
+    LockOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 
@@ -36,6 +38,8 @@ const icons: IconDefinition[] = [
     AudioTwoTone,
     BookTwoTone,
     CameraTwoTone,
+    UserOutline,
+    LockOutline,
 ];
 
 @NgModule({

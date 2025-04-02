@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
             if (userInfo.username === 'XiangJie' && userInfo.password === '123') {
                 this.message.success('登录成功');
                 localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                localStorage.setItem('isLogin', 'true'); // 存储登录状态
                 this.router.navigate(['/welcome']);
             } else {
                 this.message.error('用户名或密码错误');

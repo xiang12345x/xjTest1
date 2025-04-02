@@ -5,6 +5,10 @@
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-gap: 10px;
+    background-image: url('../../../assets/background/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
    .left{
         height: 100%;
         display: grid;
@@ -28,12 +32,16 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                cursor: pointer;
+                :hover{
+                    color: #fde047;
+                }
             }
         }
     }
     
     .item{
-        background-color: white;
+        background-color: transparent;
         border: 1px solid #eee;
         border-radius: 10px;
         display: flex;
@@ -59,6 +67,30 @@
     }
 }
 
-
+.transparent-table {
+    background-color: transparent !important;
+    
+    ::ng-deep {
+        .ant-table {
+            background-color: transparent;
+            color: white;
+            
+            thead > tr > th {
+                background-color: rgba(255,255,255,0.2);
+                border-bottom-color: rgba(255,255,255,0.3);
+            }
+            
+            tbody > tr > td {
+                background-color: transparent;
+                border-bottom-color: rgba(255,255,255,0.2);
+            }
+            
+            // 鼠标悬停效果
+            tbody > tr:hover > td {
+                background-color: rgba(255,255,255,0.1);
+            }
+        }
+    }
+}
 
 

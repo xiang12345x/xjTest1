@@ -184,6 +184,11 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                 min: 0,
                 max: 1000,
                 text: ['高', '低'],
+                textStyle: {
+                    color: '#fde047', // 设置文字颜色为黄色
+                    fontSize: 12, // 设置文字大小
+                    fontWeight: 'bold', // 设置文字粗细
+                },
                 realtime: false,
                 calculable: true,
                 inRange: {
@@ -207,9 +212,6 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                         borderColor: '#fff',
                         borderWidth: 1,
                         areaColor: '#6973b8',
-                        emphasis: {
-                            areaColor: '#6973b8',
-                        },
                     },
                     emphasis: {
                         // 高亮状态下的样式

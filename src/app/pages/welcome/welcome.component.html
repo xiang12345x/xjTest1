@@ -1,4 +1,4 @@
-<nz-layout style="height: 100%">
+<nz-layout style="height: 100%" class="main_content">
     <nz-layout>
         <nz-header style="background-color: #6973b8; padding: 0 20px">
             <div
@@ -42,7 +42,12 @@
                 </div>
                 <div class="pd_10 view_scroll item">
                     <h1 class="title italic">人员信息</h1>
-                    <nz-table #basicTable [nzData]="tableIfy.data" nzSize="small">
+                    <nz-table
+                        #basicTable
+                        [nzData]="tableIfy.data"
+                        nzSize="small"
+                        class="transparent-table"
+                    >
                         <thead>
                             <tr>
                                 <th>姓名</th>
