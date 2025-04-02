@@ -25,18 +25,28 @@ export class LoginComponent implements OnInit {
         });
     }
 
+    /**等待框显示 */
+    loading = false;
+
+    /**等待框显示文字 */
+    loadingText = '登录中...';
+
     onSubmit() {
-        if (this.loginForm.valid) {
-            const userInfo = this.loginForm.getRawValue();
-            if (userInfo.username === 'XiangJie' && userInfo.password === '123') {
-                this.message.success('登录成功');
-                localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                localStorage.setItem('isLogin', 'true'); // 存储登录状态
-                this.router.navigate(['/welcome']);
-            } else {
-                this.message.error('用户名或密码错误');
+        this.loading = true; // 显示等待框
+        setTimeout(() => {
+            this.loading = false; // 隐藏等待框
+            if (this.loginForm.valid) {
+                const userInfo = this.loginForm.getRawValue();
+                if (userInfo.username === 'XiangJie' && userInfo.password === '123') {
+                    this.message.success('登录成功');
+                    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                    localStorage.setItem('isLogin', 'true'); // 存储登录状态
+                    this.router.navigate(['/welcome']);
+                } else {
+                    this.message.error('用户名或密码错误');
+                }
             }
-        }
+        }, 2000);
     }
 
     ngOnInit(): void {

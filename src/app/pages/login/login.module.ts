@@ -7,11 +7,12 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { LoadingComponent } from '@src/app/components/loading/loading.component';
 
 const routes: Routes = [{ path: '', component: LoginComponent }];
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [LoginComponent, LoadingComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
