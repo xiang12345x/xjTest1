@@ -28,6 +28,8 @@ import {
     LockOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 registerLocaleData(zh);
 
@@ -57,6 +59,11 @@ const icons: IconDefinition[] = [
     ],
     providers: [
         { provide: NZ_I18N, useValue: zh_CN },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
         Title,
         NzMessageService,
         NzModalService,

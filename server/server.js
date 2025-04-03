@@ -73,7 +73,7 @@ app.get('/api/userInfo', async (req, res) => {
             return res.status(200).json({ success: false, message: '没有找到该用户！' });
         }
 
-        res.status(200).json({ success: true, user });
+        res.status(200).json({ success: true, data: user });
     } catch (err) {
         console.error('Get user info error:', err);
         res.status(500).json({ success: false, message: 'Server error' });

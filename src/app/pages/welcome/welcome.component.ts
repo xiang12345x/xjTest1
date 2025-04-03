@@ -6,6 +6,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Title } from '@angular/platform-browser';
 import { Person } from './type';
 import * as echarts from 'echarts';
+import { WelcomeService } from './welcome.service';
 
 @Component({
     selector: 'app-welcome',
@@ -18,7 +19,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
         private message: NzMessageService,
         private modal: NzModalService,
         private notify: NzNotificationService,
-        private titleService: Title
+        private titleService: Title,
+        private service: WelcomeService
     ) {}
     isCollapsed = false;
 
@@ -100,12 +102,21 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
      */
     @ViewChild('chart') chartRef!: ElementRef;
 
+    /**
+     * 获取用户信息方法
+     */
+    getUserInfo() {
+        this.service.getUserInfo().subscribe((res: any) => {
+            this.userInfo = res.data;
+            this.hint(); // 欢迎信息
+        });
+    }
+
     ngOnInit() {
         /**设置页面标题 */
         this.titleService.setTitle('首页-欢迎访问');
         /**获取用户信息 */
-        this.userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-        this.hint(); // 欢迎信息
+        this.getUserInfo();
     }
 
     ngAfterViewInit(): void {
