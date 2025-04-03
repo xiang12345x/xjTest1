@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "regions": ["hkg1"], 
+    "builds": [
+      {
+        "src": "server/server.js",
+        "use": "@vercel/node",
+        "config": { "includeFiles": ["server/**"] }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)", 
+        "dest": "server/server.js",
+        "headers": {
+          "Cache-Control": "public, max-age=3600"
+        }
+      }
+    ]
+  }

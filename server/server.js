@@ -1,13 +1,22 @@
+// 在文件顶部添加环境变量配置
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
 const app = express();
-const port = 3000;
+// const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// 在路由最前面添加
+app.use((req, res, next) => {
+    res.set('X-Server-Region', process.env.VERCEL_REGION || 'local');
+    next();
+});
 
 // 添加在所有路由之前的中间件
 app.use((req, res, next) => {
@@ -22,15 +31,16 @@ app.use((req, res, next) => {
 
 // 连接MongoDB
 mongoose
-    .connect('mongodb://localhost:27017/mini-program', {
+    .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mini-program', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000,
     })
     .then(() => {
         console.log('✅ MongoDB连接成功');
         // 启动Express服务器
-        app.listen(port, () => {
-            console.log(`服务器运行在 http://localhost:${port}`);
+        app.listen(PORT, () => {
+            console.log(`服务器运行在端口 ${PORT}`);
         });
     })
     .catch(err => {
