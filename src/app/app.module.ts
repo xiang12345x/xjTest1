@@ -26,6 +26,7 @@ import {
     CameraTwoTone,
     UserOutline,
     LockOutline,
+    SafetyOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +43,7 @@ const icons: IconDefinition[] = [
     CameraTwoTone,
     UserOutline,
     LockOutline,
+    SafetyOutline,
 ];
 
 @NgModule({
