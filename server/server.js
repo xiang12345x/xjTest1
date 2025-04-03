@@ -48,6 +48,11 @@ mongoose
         process.exit(1); // 连接失败时退出
     });
 
+// 测试接口
+app.get('/test', async (req, res) => {
+    res.send('test');
+});
+
 // 登录接口
 app.post('/api/login', async (req, res) => {
     try {
