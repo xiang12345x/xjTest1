@@ -7,7 +7,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
     constructor(private router: Router) {}
     canActivate(): boolean {
-        if (localStorage.getItem('isLogin') === 'true') {
+        if (localStorage.getItem('token')) {
             return true;
         } else {
             this.router.navigate(['/login']); // 重定向到登录页面

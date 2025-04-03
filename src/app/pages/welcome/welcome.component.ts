@@ -278,7 +278,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
             nzCancelText: '取消',
             nzOnOk: () => {
                 this.router.navigate(['/login']);
-                localStorage.removeItem('userInfo');
+                localStorage.removeItem('token');
                 this.message.success('退出成功');
             },
         });

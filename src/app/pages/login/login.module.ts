@@ -8,6 +8,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { LoadingComponent } from '@src/app/components/loading/loading.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 const routes: Routes = [{ path: '', component: LoginComponent }];
 
@@ -21,6 +22,7 @@ const routes: Routes = [{ path: '', component: LoginComponent }];
         NzInputModule,
         NzButtonModule,
         NzLayoutModule,
+        NzModalModule,
     ],
 })
 export class LoginModule {}
