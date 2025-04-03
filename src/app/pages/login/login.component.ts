@@ -54,9 +54,11 @@ export class LoginComponent implements OnInit {
         }),
         open: () => {
             this.registerIfy.visible = true; // 显示弹框
+            this.loadingText = '注册中...'; // 设置等待框文字
             this.registerIfy.registerForm.reset({});
         },
         close: () => {
+            this.loadingText = '登录中...';
             this.registerIfy.visible = false; // 隐藏弹框
         },
         /**注册 */
