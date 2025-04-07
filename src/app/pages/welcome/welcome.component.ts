@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { Person } from './type';
 import * as echarts from 'echarts';
 import { WelcomeService } from './welcome.service';
+import { query } from '@angular/animations';
 
 @Component({
     selector: 'app-welcome',
@@ -96,6 +97,13 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                 router: '/camera',
             },
         ],
+        skip: (data: any) => {
+            this.router.navigate(['/feature' + data.router], {
+                queryParams: {
+                    name: data.name,
+                },
+            });
+        },
     };
     /**
      * 获取echarts挂载的dom
@@ -108,6 +116,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     getUserInfo() {
         this.service.getUserInfo().subscribe((res: any) => {
             this.userInfo = res.data;
+            // 将用户信息缓存到本地
+            localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
             this.hint(); // 欢迎信息
         });
     }
@@ -290,6 +300,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
             nzOnOk: () => {
                 this.router.navigate(['/login']);
                 localStorage.removeItem('token');
+                localStorage.removeItem('userInfo');
                 this.message.success('退出成功');
             },
         });

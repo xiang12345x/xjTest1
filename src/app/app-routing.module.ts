@@ -13,6 +13,12 @@ const routes: Routes = [
         loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule),
         canActivate: [AuthGuard], // 添加路由守卫
     },
+    // 功能区
+    {
+        path: 'feature',
+        loadChildren: () => import('./pages/feature/feature.module').then(m => m.FeatureModule),
+        canActivate: [AuthGuard], // 添加路由守卫
+    },
 ];
 
 @NgModule({

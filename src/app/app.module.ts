@@ -27,10 +27,12 @@ import {
     UserOutline,
     LockOutline,
     SafetyOutline,
+    MailOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { ResponseInterceptor } from './services/response.interceptor';
 
 registerLocaleData(zh);
 
@@ -44,6 +46,7 @@ const icons: IconDefinition[] = [
     UserOutline,
     LockOutline,
     SafetyOutline,
+    MailOutline,
 ];
 
 @NgModule({
@@ -66,6 +69,11 @@ const icons: IconDefinition[] = [
             useClass: AuthInterceptor,
             multi: true,
         },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: ResponseInterceptor,
+        //     multi: true,
+        // },
         Title,
         NzMessageService,
         NzModalService,

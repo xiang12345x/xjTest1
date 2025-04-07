@@ -9,7 +9,6 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
 }
 
 // 默认主题
@@ -43,6 +42,16 @@ body {
 }
 .pd_20 {
     padding: 20px;
+}
+
+.header{
+    background-color: #6973b8; 
+    padding: 0 20px;
+    display: flex; 
+    align-items: center;
+    color:  #fde047;
+    font-weight: bold;
+    font-style: italic;
 }
 
 
