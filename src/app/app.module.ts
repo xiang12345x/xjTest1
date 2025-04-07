@@ -69,11 +69,11 @@ const icons: IconDefinition[] = [
             useClass: AuthInterceptor,
             multi: true,
         },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: ResponseInterceptor,
-        //     multi: true,
-        // },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ResponseInterceptor,
+            multi: true,
+        },
         Title,
         NzMessageService,
         NzModalService,

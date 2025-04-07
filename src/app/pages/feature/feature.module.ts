@@ -14,6 +14,27 @@ const routes = [
                 path: 'info',
                 loadChildren: () => import('./info/info.module').then(m => m.InfoModule),
             },
+            {
+                path: 'account',
+                loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+            },
+            {
+                path: 'appstore',
+                loadChildren: () =>
+                    import('./appstore/appstore.module').then(m => m.AppstoreModule),
+            },
+            {
+                path: 'audio',
+                loadChildren: () => import('./audio/audio.module').then(m => m.AudioModule),
+            },
+            {
+                path: 'book',
+                loadChildren: () => import('./book/book.module').then(m => m.BookModule),
+            },
+            {
+                path: 'camera',
+                loadChildren: () => import('./camera/camera.module').then(m => m.CameraModule),
+            },
         ],
     },
 ];

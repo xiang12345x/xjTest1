@@ -87,7 +87,6 @@ export class LoginComponent implements OnInit {
             this.loginService.login(userInfo).subscribe((res: any) => {
                 this.loading = false; // 隐藏等待框
                 if (res.success) {
-                    this.message.success(res.message); // 登录成功提示
                     localStorage.setItem('token', res.token);
                     this.router.navigate(['/welcome']).then(success => {
                         if (!success) {

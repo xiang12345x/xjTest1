@@ -26,6 +26,14 @@ export class ResponseInterceptor implements HttpInterceptor {
                 },
                 error: (err: HttpErrorResponse) => {
                     // 在这里处理错误响应
+                    if (err.status === 401) {
+                        this.message.error('请重新登录');
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('userInfo');
+                        window.location.href = '/xjTest1/login';
+                        return;
+                    }
+
                     if (err.error?.message) {
                         this.message.error(err.error.message);
                     } else {

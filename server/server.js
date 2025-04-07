@@ -1,5 +1,5 @@
 // 在文件顶部添加环境变量配置
-// require('dotenv').config();
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const express = require('express');
 const cors = require('cors');
@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const User = require('./models/user');
 const login = require('./api/login');
 const welcome = require('./api/welcome');
+const account = require('./api/account');
 
 const app = express();
 // const port = 3000;
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 
 app.use('/api', login);
 app.use('/api', welcome);
+app.use('/api/account', account);
 
 // 连接MongoDB
 mongoose
