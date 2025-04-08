@@ -10,7 +10,9 @@ router.post('/login', async (req, res) => {
 
         if (user && user.password === password) {
             const jwt = require('jsonwebtoken');
-            const token = jwt.sign({ userId: user._id }, 'your-secret-key', { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+                expiresIn: '1h',
+            });
             res.status(200).json({ success: true, token, message: '登录成功！' });
         } else {
             res.status(200).json({ success: false, message: '用户名或密码错误！' });

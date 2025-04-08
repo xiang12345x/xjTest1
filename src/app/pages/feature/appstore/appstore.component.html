@@ -1,1 +1,62 @@
-<p>appstore works!</p>
+<div class="app-store-container">
+    <div class="search-section">
+        <nz-input-group [nzSuffix]="suffixIconSearch" style="width: 200px; margin-right: 10px">
+            <input type="text" nz-input placeholder="搜索应用" style="border-radius: 20px" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search" style="color: #6973b8"></i>
+        </ng-template>
+        <nz-select style="width: 200px; margin-right: 10px" nzPlaceHolder="选择分类" nzAllowClear>
+            <nz-option nzLabel="全部" nzValue="all"></nz-option>
+            <nz-option nzLabel="工具" nzValue="tools"></nz-option>
+            <nz-option nzLabel="游戏" nzValue="games"></nz-option>
+            <nz-option nzLabel="社交" nzValue="social"></nz-option>
+        </nz-select>
+        <nz-switch
+            [(ngModel)]="isEditMode"
+            nzCheckedChildren="编辑"
+            nzUnCheckedChildren="查看"
+            style="margin-right: 10px"
+        ></nz-switch>
+        <button nz-button nzType="primary" (click)="openAddDialog()" *ngIf="isEditMode">
+            添加应用
+        </button>
+    </div>
+
+    <div class="app-grid">
+        <nz-card
+            *ngFor="let app of apps"
+            class="app-card"
+            [nzHoverable]="true"
+            [nzBordered]="false"
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin: 12px; border-radius: 8px"
+        >
+            <div class="app-icon" style="font-size: 32px; color: #1890ff; margin-bottom: 12px">
+                <i nz-icon nzType="appstore" nzTheme="outline"></i>
+            </div>
+            <h4 style="margin: 8px 0; font-weight: 500">{{ app.name }}</h4>
+            <p style="color: #666; margin-bottom: 16px">{{ app.description }}</p>
+            <div style="display: flex; gap: 8px">
+                <button nz-button nzType="primary" *ngIf="!isEditMode" style="flex: 1">下载</button>
+                <button
+                    nz-button
+                    nzType="default"
+                    *ngIf="isEditMode"
+                    (click)="editApp(app)"
+                    style="flex: 1"
+                >
+                    编辑
+                </button>
+                <button
+                    nz-button
+                    nzDanger
+                    *ngIf="isEditMode"
+                    (click)="deleteApp(app)"
+                    style="flex: 1"
+                >
+                    删除
+                </button>
+            </div>
+        </nz-card>
+    </div>
+</div>

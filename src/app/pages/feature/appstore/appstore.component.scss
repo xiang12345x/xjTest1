@@ -1,0 +1,11 @@
+.search-section{
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+}
+
+.app-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}

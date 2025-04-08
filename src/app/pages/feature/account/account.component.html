@@ -1,4 +1,4 @@
-<div>
+<div class="content">
     <nz-card nzTitle="记账本" [nzBordered]="true" [nzHoverable]="true">
         <form nz-form (ngSubmit)="addRecord()">
             <nz-form-item>
@@ -49,8 +49,7 @@
             <button nz-button nzType="primary" type="submit">添加记录</button>
         </form>
     </nz-card>
-    <nz-divider></nz-divider>
-    <nz-card [nzBordered]="true" [nzHoverable]="true">
+    <nz-card nzTitle="记录列表" [nzBordered]="true" [nzHoverable]="true">
         <div>
             <nz-range-picker [(ngModel)]="date"></nz-range-picker>
             <button nz-button nzType="primary" (click)="dateChange(date)" style="margin-left: 10px">
@@ -59,9 +58,6 @@
         </div>
         <div style="overflow: auto; height: 300px">
             <nz-list>
-                <nz-list-header>
-                    <h3>记录列表</h3>
-                </nz-list-header>
                 <nz-list-item *ngFor="let record of records">
                     <nz-list-item-meta
                         [nzTitle]="record.amount + '元'"

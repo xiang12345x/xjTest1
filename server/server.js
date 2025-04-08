@@ -4,13 +4,10 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const User = require('./models/user');
 const login = require('./api/login');
 const welcome = require('./api/welcome');
 const account = require('./api/account');
-
 const app = express();
-// const port = 3000;
 
 app.use(cors());
 app.use(express.json());

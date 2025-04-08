@@ -33,6 +33,7 @@ export class InfoComponent implements OnInit {
 
     editForm() {
         this.edit = true;
+        this.title = '个人信息编辑';
         this.userInfoForm.enable();
     }
 
@@ -53,17 +54,11 @@ export class InfoComponent implements OnInit {
         let data = this.userInfoForm.value;
         data = { ...this.userInfo, ...data };
         this.service.updateUser(data).subscribe((res: any) => {
-            console.log(res);
-            if (res.code === 401) {
-                this.message.error(res.message);
-                this.router.navigate(['/login']);
-            } else if (res.success) {
-                this.message.success(res.message);
+            if (res) {
                 localStorage.setItem('userInfo', JSON.stringify(res.data));
                 this.edit = false;
+                this.title = '个人信息查看';
                 this.userInfoForm.disable();
-            } else {
-                this.message.error(res.message);
             }
         });
     }
