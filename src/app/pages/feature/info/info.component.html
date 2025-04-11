@@ -1,6 +1,20 @@
 <div class="view_scroll content">
     <div class="center">
         <h1 class="title">{{ title }}</h1>
+        <div class="avatar-upload" style="margin: 10px 0" *ngIf="edit">
+            <div style="display: flex; align-items: center; justify-content: space-between">
+                <span class="title">头像上传：</span>
+                <input type="file" id="inputId" (change)="uploadAvator($event)" accept="image/*" />
+                <ng-container *ngIf="avatarUrl; else avatarTemp">
+                    <img
+                        [src]="avatarUrl"
+                        id="img"
+                        style="width: 50px; height: 50px; border-radius: 50%"
+                    />
+                </ng-container>
+                <ng-template #avatarTemp>暂无数据</ng-template>
+            </div>
+        </div>
         <form nz-form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
             <nz-form-item>
                 <nz-form-control [nzErrorTip]="nameErrorTpl">

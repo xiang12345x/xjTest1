@@ -15,6 +15,17 @@ export class FeatureComponent implements OnInit {
      */
     featureName = '';
 
+    isDarkMode = false;
+    /**切换主题 */
+    toggleTheme() {
+        this.isDarkMode = !this.isDarkMode;
+        if (this.isDarkMode) {
+            document.body.setAttribute('data-theme', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
+        }
+    }
+
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {
             this.featureName = params['name'];

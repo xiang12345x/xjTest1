@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     address: { type: String },
     email: { type: String },
+    avatar: { type: String },
+    avatarUrl: { type: String },
 });
 
 module.exports = mongoose.model('User', userSchema);

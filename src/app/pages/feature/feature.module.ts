@@ -4,6 +4,8 @@ import { FeatureComponent } from './feature.component';
 import { RouterModule } from '@angular/router';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 const routes = [
     {
@@ -41,6 +43,13 @@ const routes = [
 
 @NgModule({
     declarations: [FeatureComponent],
-    imports: [CommonModule, RouterModule.forChild(routes), NzLayoutModule, NzBreadCrumbModule],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        NzLayoutModule,
+        NzBreadCrumbModule,
+        NzButtonModule,
+        NzIconModule,
+    ],
 })
 export class FeatureModule {}

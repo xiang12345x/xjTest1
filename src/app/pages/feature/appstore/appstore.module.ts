@@ -8,7 +8,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 const routes: Routes = [
     {
@@ -29,6 +31,9 @@ const routes: Routes = [
         NzButtonModule,
         NzSwitchModule,
         FormsModule,
+        NzModalModule,
+        NzFormModule,
+        ReactiveFormsModule,
     ],
 })
 export class AppstoreModule {}

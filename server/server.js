@@ -33,6 +33,14 @@ app.use('/api', login);
 app.use('/api', welcome);
 app.use('/api/account', account);
 
+// 添加静态文件服务中间件
+app.use(
+    '/api/uploads',
+    express.static('uploads', {
+        maxAge: '1d', // 缓存1天
+    })
+);
+
 // 连接MongoDB
 mongoose
     .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mini-program', {

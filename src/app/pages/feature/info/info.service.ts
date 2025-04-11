@@ -12,4 +12,10 @@ export class InfoService {
         const api = 'http://localhost:3000/api/updateUser';
         return this.http.post(api, data);
     }
+
+    /**上传用户信息 */
+    uploadAvatar(data: any) {
+        const api = 'http://localhost:3000/api/uploadAvatar';
+        return this.http.post(api, data);
+    }
 }

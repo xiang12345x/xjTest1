@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { InfoService } from './info.service';
 import { Router } from '@angular/router';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
     selector: 'xj-info',
@@ -11,10 +12,14 @@ import { Router } from '@angular/router';
     styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent implements OnInit {
+    /**头像URL */
+    avatarUrl = '';
+
     constructor(
         private message: NzMessageService,
         private service: InfoService,
-        private router: Router
+        private router: Router,
+        private http: HttpClient
     ) {}
 
     /**标题 */
@@ -39,10 +44,27 @@ export class InfoComponent implements OnInit {
 
     ngOnInit(): void {
         this.userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-        console.log(this.userInfo);
+        this.avatarUrl = this.userInfo.avatarUrl;
         this.userInfoForm.patchValue(this.userInfo);
         if (!this.edit) {
             this.userInfoForm.disable();
+        }
+    }
+
+    /**处理头像上传 */
+    uploadAvator(event: Event): void {
+        const file = (event.target as HTMLInputElement).files?.[0];
+        if (file) {
+            // 上传图片
+            const formData = new FormData();
+            formData.append('avatar', file);
+            this.service.uploadAvatar(formData).subscribe((res: any) => {
+                if (res) {
+                    this.userInfo = res.data.user;
+                    this.avatarUrl = res.data.avatarUrl; // 使用服务器返回的URL
+                    localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
+                }
+            });
         }
     }
 

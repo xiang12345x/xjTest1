@@ -18,7 +18,7 @@
             nzUnCheckedChildren="查看"
             style="margin-right: 10px"
         ></nz-switch>
-        <button nz-button nzType="primary" (click)="openAddDialog()" *ngIf="isEditMode">
+        <button nz-button nzType="primary" (click)="addAppModalIfy.open()" *ngIf="isEditMode">
             添加应用
         </button>
     </div>
@@ -31,7 +31,7 @@
             [nzBordered]="false"
             style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin: 12px; border-radius: 8px"
         >
-            <div class="app-icon" style="font-size: 32px; color: #1890ff; margin-bottom: 12px">
+            <div class="app-icon" style="font-size: 32px; color: #6973b8; margin-bottom: 12px">
                 <i nz-icon nzType="appstore" nzTheme="outline"></i>
             </div>
             <h4 style="margin: 8px 0; font-weight: 500">{{ app.name }}</h4>
@@ -40,9 +40,9 @@
                 <button nz-button nzType="primary" *ngIf="!isEditMode" style="flex: 1">下载</button>
                 <button
                     nz-button
-                    nzType="default"
+                    nzType="primary"
                     *ngIf="isEditMode"
-                    (click)="editApp(app)"
+                    (click)="addAppModalIfy.open(app)"
                     style="flex: 1"
                 >
                     编辑

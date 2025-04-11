@@ -27,6 +27,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
 
     /**用户信息 */
     userInfo = <any>{};
+    /**头像URL */
+    avatarUrl = '';
 
     /**当前时间 */
     time = new Date();
@@ -116,6 +118,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     getUserInfo() {
         this.service.getUserInfo().subscribe((res: any) => {
             this.userInfo = res.data;
+            this.avatarUrl = this.userInfo.avatarUrl || 'assets/images/default.jpeg'; // 默认头像pat
             // 将用户信息缓存到本地
             localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
             this.hint(); // 欢迎信息

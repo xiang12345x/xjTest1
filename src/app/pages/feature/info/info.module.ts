@@ -7,6 +7,9 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 const routes = [
     {
@@ -26,6 +29,9 @@ const routes = [
         NzInputModule,
         NzButtonModule,
         NzDatePickerModule,
+        NzAvatarModule,
+        NzUploadModule,
+        NzEmptyModule,
     ],
 })
 export class InfoModule {}

@@ -5,9 +5,13 @@
                 <img style="width: 50px" src="assets/logo/logo.svg" alt="logo" />
             </a>
             <span>The creator of one project is Xj</span>
-            <span class="pd_10" style="margin-left: auto"
-                >{{ this.userInfo.username + this.welcome }}!</span
-            >
+
+            <img
+                [src]="avatarUrl"
+                id="img"
+                style="width: 50px; height: 50px; border-radius: 50%; margin-left: auto"
+            />
+            <span class="pd_10">{{ this.userInfo.username + this.welcome }}!</span>
             <a (click)="loginOut()">退出登录</a>
         </nz-header>
         <nz-content class="container_box pd_10">

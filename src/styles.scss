@@ -18,6 +18,20 @@ body {
     --text-color: #fff;
 }
 
+/*对设置data-theme='dark'下的所有元素进行反转*/
+[data-theme='dark'] {
+    filter: invert(1) hue-rotate(180deg);
+    /*对不需要反转的元素进行复原，可按照自己需求追加*/
+    img,
+    video,
+    .avatar,
+    .image,
+    .thumb
+    .icon {
+      filter: none;
+    }
+  }
+
 // 紫色主题
 [data-theme='purple'] {
     --primary-color: #6973b8;
@@ -55,7 +69,3 @@ body {
 }
 
 
-.ant-message-custom-content {
-    display: flex;
-    align-items: center;
-  }
