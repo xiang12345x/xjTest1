@@ -100,6 +100,15 @@ export class LoginComponent implements OnInit {
         }
     }
 
+    guestLogin() {
+        this.loading = true;
+        this.loadingText = '正在进入游客模式...';
+        localStorage.setItem('token', 'guest'); // 模拟游客模式，设置token为guest
+        localStorage.setItem('userInfo', JSON.stringify({ username: '游客', role: 'guest' })); // 模拟游客模式，设置userInfo为guest dat
+        localStorage.setItem('isGuest', 'true'); // 模拟游客模式，设置isGuest为true
+        this.router.navigate(['/welcome']);
+    }
+
     ngOnInit(): void {
         this.titleService.setTitle('登录页面-欢迎访问'); // 设置页面标题为'登录页面'
     }

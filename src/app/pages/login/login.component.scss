@@ -38,5 +38,16 @@
         color: white;
     }
 
+    .guest-login-button {
+        background-color: #f0f0f0;
+        color: #666;
+        border: 1px dashed #ccc;
+        
+        &:hover {
+            background-color: #e6e6e6;
+            border-color: #999;
+        }
+    }
+
 }
 

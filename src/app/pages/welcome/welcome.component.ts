@@ -28,7 +28,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     /**用户信息 */
     userInfo = <any>{};
     /**头像URL */
-    avatarUrl = '';
+    avatarUrl = 'assets/background/7.jpeg';
 
     /**当前时间 */
     time = new Date();
@@ -128,8 +128,13 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         /**设置页面标题 */
         this.titleService.setTitle('首页-欢迎访问');
-        /**获取用户信息 */
-        this.getUserInfo();
+        const isGuest = localStorage.getItem('isGuest');
+        if (isGuest) {
+            this.userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+        } else {
+            /**获取用户信息 */
+            this.getUserInfo();
+        }
     }
 
     ngAfterViewInit(): void {

@@ -5,9 +5,13 @@
   }
   
   .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 20px;
-    text-align: center;
-    
+    nz-slider {
+        width: 100px;
+    }
     button {
       margin: 0 10px;
       padding: 8px 16px;
@@ -17,3 +21,21 @@
     
     }
   }
+
+  .progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+    
+    nz-slider {
+        flex: 1;
+        margin: 0 10px;
+    }
+    
+    span {
+        width: 40px;
+        text-align: center;
+        font-size: 12px;
+    }
+}

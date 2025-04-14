@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 import * as THREE from 'three';
+import { Howl } from 'howler'; // 导入Howler.js
 
 @Component({
     selector: 'xj-audio',
@@ -23,6 +24,18 @@ export class AudioComponent implements OnInit, OnDestroy {
         'assets/images/5.jpeg',
         'assets/images/6.jpeg',
     ];
+    public sound!: Howl; // 音乐播放器实例
+    private audioFiles = [
+        'assets/audio/明天，你好 - 牛奶咖啡.mp3',
+        'assets/audio/时光背面的我 - 刘至佳_韩瞳.mp3',
+        'assets/audio/是你 - 梦然.mp3',
+        'assets/audio/我想更懂你 - 潘玮柏_苏芮.mp3',
+        'assets/audio/下完这场雨 - 后弦.mp3',
+    ];
+    volume = 50;
+    currentTime = 0; // 当前播放时间
+    duration = 0; // 歌曲总时长
+    progressInterval!: number; // 进度条更新定时器
 
     constructor(private el: ElementRef) {}
 
@@ -30,16 +43,68 @@ export class AudioComponent implements OnInit, OnDestroy {
         this.initThreeJS();
         this.createObjects();
         this.animate();
+        this.initAudioPlayer();
+    }
+
+    private initAudioPlayer(): void {
+        this.sound = new Howl({
+            src: [this.audioFiles[this.currentIndex]],
+            autoplay: true,
+            loop: true,
+            volume: this.volume / 100,
+            onload: () => {
+                this.duration = this.sound.duration();
+            },
+            onplay: () => {
+                this.startProgressTimer();
+            },
+            onend: () => {
+                this.clearProgressTimer();
+            },
+        });
+    }
+
+    private startProgressTimer(): void {
+        this.clearProgressTimer();
+        this.progressInterval = window.setInterval(() => {
+            this.currentTime = this.sound.seek() || 0;
+        }, 1000);
+    }
+
+    private clearProgressTimer(): void {
+        if (this.progressInterval) {
+            clearInterval(this.progressInterval);
+        }
+    }
+
+    seekAudio(value: number): void {
+        if (this.sound) {
+            this.sound.seek(value);
+            this.currentTime = value;
+        }
     }
 
     /**上一张 */
     prev(): void {
         this.currentIndex = Math.max(0, this.currentIndex - 1);
+        this.playCurrentAudio();
     }
 
     /**下一张 */
     next(): void {
         this.currentIndex = Math.min(this.objects.length - 1, this.currentIndex + 1);
+        this.playCurrentAudio();
+    }
+
+    private playCurrentAudio(): void {
+        if (this.sound.playing()) {
+            this.sound.stop();
+        }
+        this.sound = new Howl({
+            src: [this.audioFiles[this.currentIndex]],
+            autoplay: true,
+            volume: this.volume / 100,
+        });
     }
 
     private initThreeJS(): void {
@@ -139,5 +204,6 @@ export class AudioComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         cancelAnimationFrame(this.rafId);
         this.renderer.dispose();
+        this.clearProgressTimer();
     }
 }

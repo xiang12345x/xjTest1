@@ -1,5 +1,24 @@
 <div class="three-container" style="width: 100%; height: 60vh"></div>
 <div class="controls">
-    <button nz-button nzType="primary" (click)="prev()">上一张</button>
-    <button nz-button nzType="primary" (click)="next()">下一张</button>
+    <button nz-button nzType="primary" (click)="prev()">上一首</button>
+    <button nz-button nzType="primary" (click)="next()">下一首</button>
+    <button nz-button nzType="default" (click)="sound.play()">播放</button>
+    <button nz-button nzType="default" (click)="sound.pause()">暂停</button>
+    <div class="progress-container">
+        <span>{{ currentTime | timeFormat }}</span>
+        <nz-slider
+            [(ngModel)]="currentTime"
+            (ngModelChange)="seekAudio($event)"
+            [nzMax]="duration"
+            [nzStep]="0.1"
+        ></nz-slider>
+        <span>{{ duration | timeFormat }}</span>
+    </div>
+    <nz-slider
+        [(ngModel)]="volume"
+        (ngModelChange)="sound.volume(volume / 100)"
+        [nzMin]="0"
+        [nzMax]="100"
+        [nzStep]="5"
+    ></nz-slider>
 </div>
