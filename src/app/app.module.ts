@@ -30,6 +30,7 @@ import {
     MailOutline,
     AppstoreOutline,
     BulbOutline,
+    CustomerServiceTwoTone,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -51,6 +52,7 @@ const icons: IconDefinition[] = [
     MailOutline,
     AppstoreOutline,
     BulbOutline,
+    CustomerServiceTwoTone,
 ];
 
 @NgModule({

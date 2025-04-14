@@ -4,7 +4,12 @@
             <img style="width: 50px" src="assets/logo/logo.svg" alt="logo" />
         </a>
         <span>功能区-{{ this.featureName }}</span>
-        <button nz-button (click)="toggleTheme()" style="margin-left: auto">
+        <button
+            nz-button
+            nzType="primary"
+            (click)="toggleTheme()"
+            style="margin-left: auto; border: 1px solid white"
+        >
             <i nz-icon nzType="bulb"></i> 切换主题
         </button>
     </nz-header>

@@ -84,8 +84,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                 router: '/appstore',
             },
             {
-                icon: 'audio',
-                name: '录音',
+                icon: 'customer-service',
+                name: '音乐',
                 router: '/audio',
             },
             {

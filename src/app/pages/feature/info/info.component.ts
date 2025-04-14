@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { InfoService } from './info.service';
-import { Router } from '@angular/router';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
     selector: 'xj-info',
@@ -15,12 +12,7 @@ export class InfoComponent implements OnInit {
     /**头像URL */
     avatarUrl = '';
 
-    constructor(
-        private message: NzMessageService,
-        private service: InfoService,
-        private router: Router,
-        private http: HttpClient
-    ) {}
+    constructor(private message: NzMessageService, private service: InfoService) {}
 
     /**标题 */
     title = '个人信息查看';
