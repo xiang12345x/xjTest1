@@ -1,9 +1,19 @@
 .content{
     display: flex;
     justify-content: center;
-    .center{
-        width: 33%;
+    // 移动端基础样式
+    @media (max-width: 768px) {
+        .center{
+            width: 100%;
+        }
     }
+    // 桌面端样式保持不变
+    @media (min-width: 769px) {
+        .center{
+            width: 50%;
+        }
+    }
+   
 }
 
 .title{

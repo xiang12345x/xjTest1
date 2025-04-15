@@ -1,21 +1,24 @@
-<nz-layout style="height: 100%" class="main_content">
-    <nz-layout>
-        <nz-header class="header">
-            <a href="https://baidu.com" target="_blank">
-                <img style="width: 50px" src="assets/logo/logo.svg" alt="logo" />
-            </a>
-            <span>The creator of one project is Xj</span>
+<nz-layout class="main_content">
+    <nz-header class="header">
+        <div class="header-content">
+            <div class="header-title">
+                <a href="https://baidu.com" target="_blank">
+                    <img class="avatar" src="assets/logo/logo.svg" alt="logo" />
+                </a>
+                <span>The creator of one project is Xj</span>
+            </div>
+            <div class="user-info">
+                <img [src]="avatarUrl" class="avatar" />
+                <span class="username">{{ this.userInfo.username + ' ' + this.welcome }}!</span>
+                <a class="logout" (click)="loginOut()">退出登录</a>
+            </div>
+        </div>
+    </nz-header>
 
-            <img
-                [src]="avatarUrl"
-                id="img"
-                style="width: 50px; height: 50px; border-radius: 50%; margin-left: auto"
-            />
-            <span class="pd_10">{{ this.userInfo.username + ' ' + this.welcome }}!</span>
-            <a (click)="loginOut()">退出登录</a>
-        </nz-header>
-        <nz-content class="container_box pd_10">
-            <div class="left">
+    <nz-content class="container_box">
+        <div class="main-content">
+            <div class="left-content">
+                <!-- 数据大屏内容保持不变 -->
                 <div class="pd_10 scroll-auto item">
                     <h1 class="title italic">数据大屏</h1>
                     <div class="content">
@@ -23,7 +26,9 @@
                     </div>
                 </div>
             </div>
-            <div class="right">
+
+            <div class="right-content">
+                <!-- 功能和人员信息内容保持不变 -->
                 <div class="pd_10 scroll-auto item">
                     <h1 class="title italic">功能</h1>
                     <div class="function">
@@ -78,6 +83,6 @@
                     </nz-table>
                 </div>
             </div>
-        </nz-content>
-    </nz-layout>
+        </div>
+    </nz-content>
 </nz-layout>

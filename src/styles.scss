@@ -6,9 +6,16 @@
 @import "tailwindcss/utilities";
 html,
 body {
-    overflow: hidden;
+    overflow: auto;
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%; // 禁止字体自动调整
+    -webkit-tap-highlight-color: transparent; // 去除移动端点击高亮
+  
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 // 默认主题

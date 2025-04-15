@@ -51,8 +51,18 @@
     </nz-card>
     <nz-card nzTitle="记录列表" [nzBordered]="true" [nzHoverable]="true">
         <div>
-            <nz-range-picker [(ngModel)]="date"></nz-range-picker>
-            <button nz-button nzType="primary" (click)="dateChange(date)" style="margin-left: 10px">
+            <nz-range-picker
+                [(ngModel)]="date"
+                nzSize="small"
+                style="width: 200px"
+            ></nz-range-picker>
+            <button
+                nz-button
+                nzType="primary"
+                (click)="dateChange(date)"
+                style="margin-left: 10px"
+                nzSize="small"
+            >
                 筛选
             </button>
         </div>
@@ -67,7 +77,12 @@
                     ></nz-list-item-meta>
                     <ul nz-list-item-actions>
                         <nz-list-item-action
-                            ><button nz-button nzType="primary" (click)="deleteRecord(record)">
+                            ><button
+                                nz-button
+                                nzType="primary"
+                                (click)="deleteRecord(record)"
+                                nzSize="small"
+                            >
                                 删除
                             </button></nz-list-item-action
                         >

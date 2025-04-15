@@ -1,96 +1,279 @@
-.container_box{
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-gap: 10px;
-    background-image: url('../../../assets/background/bg1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-   .left{
-        height: 100%;
-        display: grid;
-        overflow: auto;
-        
-    }
-   .right{
-        height: 100%;
-        display: grid;
-        overflow: auto;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 10px;
-        .function{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-            padding-top: 10px;
 
-            .function_item{
-                padding: 5px;
+
+// 移动端基础样式
+@media (max-width: 768px) {
+    .main_content {
+        height: auto;
+    }
+    
+    .header {
+        padding: 0 10px;
+        height: auto;
+        width: 100%;
+        
+        .header-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .header-title{
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                cursor: pointer;
-                :hover{
-                    color: #fde047;
+            }
+            .user-info {
+                display: flex;
+                width: 100%;
+                align-items: center;
+            }
+        }
+        
+        .mobile-hidden {
+            display: none;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .username {
+            font-size: 14px;
+        }
+        
+        .logout {
+            font-size: 14px;
+        }
+    }
+    
+    .container_box {
+        flex-direction: column;
+        overflow: auto;
+        background-image: url('../../../assets/background/bg1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 0 1rem 1rem 1rem;
+        .mobile-menu-btn {
+            display: block;
+            margin: 10px auto;
+        }
+        
+        .main-content {
+            flex-direction: column;
+
+            .left-content{
+                height: 40rem;
+            }
+            
+            .right-content {
+                width: 100%;
+            }
+
+        }
+
+        .item{
+            background-color: transparent;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            display: flex;
+            height: 100%;
+            margin-top: 1rem;
+            flex-direction: column;
+
+            .title{
+                font-weight: bold;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                color: #6973b8;
+            }
+            .content{
+                flex: 1;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                .content_view{
+                    height: 100%;
+                    flex: 1;
                 }
             }
         }
     }
     
-    .item{
-        background-color: transparent;
-        border: 1px solid #eee;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        .title{
-            font-size: 16px;
-            font-weight: bold;
+    .function {
+        grid-template-columns: repeat(2, 1fr);
+        
+        &_item {
             padding: 10px;
-            border-bottom: 1px solid #eee;
-            color: #6973b8;
-        }
-        .content{
-            flex: 1;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            .content_view{
-                height: 100%;
-                flex: 1;
+            
+            i {
+                font-size: 32px !important;
             }
         }
     }
-}
-
-.transparent-table {
-    background-color: transparent !important;
     
-    ::ng-deep {
-        .ant-table {
-            background-color: transparent;
-            color: white;
-            
-            thead > tr > th {
-                background-color: rgba(255,255,255,0.2);
-                border-bottom-color: rgba(255,255,255,0.3);
-            }
-            
-            tbody > tr > td {
+    .transparent-table {
+        font-size: 12px;
+        background-color: transparent !important;
+        
+        ::ng-deep {
+            .ant-table {
                 background-color: transparent;
-                border-bottom-color: rgba(255,255,255,0.2);
+                color: white;
+                
+                thead > tr > th {
+                    background-color: rgba(255,255,255,0.2);
+                    border-bottom-color: rgba(255,255,255,0.3);
+                }
+                
+                tbody > tr > td {
+                    background-color: transparent;
+                    border-bottom-color: rgba(255,255,255,0.2);
+                }
+                
+                // 鼠标悬停效果
+                tbody > tr:hover > td {
+                    background-color: rgba(255,255,255,0.1);
+                }
             }
-            
-            // 鼠标悬停效果
-            tbody > tr:hover > td {
-                background-color: rgba(255,255,255,0.1);
-            }
+        }
+        
+        th, td {
+            padding: 8px;
         }
     }
 }
 
-
+// 桌面端样式保持不变
+@media (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+    .main_content{
+        height: 100%;
+        .header{
+            .header-content{
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .header-title{
+                    display: flex;
+                    align-items: center;
+                    .avatar{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
+                }
+                .user-info{
+                    display: flex;
+                    align-items: center;
+                    .avatar{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+        .container_box{
+            .main-content{
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                display: grid;
+                grid-template-columns: 1.5fr 1fr;
+                grid-gap: 10px;
+                background-image: url('../../../assets/background/bg1.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 10px;
+                .left-content{
+                    height: 100%;
+                    display: grid;
+                    overflow: auto;
+                }
+                .right-content{
+                    height: 100%;
+                    display: grid;
+                    overflow: auto;
+                    grid-template-rows: 1fr 1fr;
+                    grid-gap: 10px;
+                    .function{
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-gap: 10px;
+                        padding-top: 10px;
+            
+                        .function_item{
+                            padding: 5px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            cursor: pointer;
+                            :hover{
+                                color: #fde047;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+      
+    
+        
+        .item{
+            background-color: transparent;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            .title{
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                color: #6973b8;
+            }
+            .content{
+                flex: 1;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                .content_view{
+                    height: 100%;
+                    flex: 1;
+                }
+            }
+        }
+    }
+    
+    .transparent-table {
+        background-color: transparent !important;
+        
+        ::ng-deep {
+            .ant-table {
+                background-color: transparent;
+                color: white;
+                
+                thead > tr > th {
+                    background-color: rgba(255,255,255,0.2);
+                    border-bottom-color: rgba(255,255,255,0.3);
+                }
+                
+                tbody > tr > td {
+                    background-color: transparent;
+                    border-bottom-color: rgba(255,255,255,0.2);
+                }
+                
+                // 鼠标悬停效果
+                tbody > tr:hover > td {
+                    background-color: rgba(255,255,255,0.1);
+                }
+            }
+        }
+    }
+}

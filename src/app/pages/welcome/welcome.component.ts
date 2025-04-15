@@ -35,6 +35,12 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     /**当前时间对应欢迎语 */
     welcome = this.formatDate(this.time);
 
+    menuOpen = false;
+
+    toggleMenu() {
+        this.menuOpen = !this.menuOpen;
+    }
+
     /**表格 */
     tableIfy = {
         selectPerson: <Person>{},
@@ -309,6 +315,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                 this.router.navigate(['/login']);
                 localStorage.removeItem('token');
                 localStorage.removeItem('userInfo');
+                localStorage.removeItem('isGuest');
                 this.message.success('退出成功');
             },
         });

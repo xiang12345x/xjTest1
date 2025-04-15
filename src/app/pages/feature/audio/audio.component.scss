@@ -1,41 +1,65 @@
-.three-container {
-    canvas {
-      display: block;
-    }
-  }
-  
-  .controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    nz-slider {
-        width: 100px;
-    }
-    button {
-      margin: 0 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    
-    }
-  }
+.view_scroll {
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; // iOS滚动优化
+}
 
-  .progress-container {
-    display: flex;
-    align-items: center;
+.three-container {
     width: 100%;
-    margin: 10px 0;
+    height: 40vh; // 移动端高度调整
     
-    nz-slider {
-        flex: 1;
-        margin: 0 10px;
+    @media (min-width: 768px) {
+        height: 60vh; // 桌面端恢复原高度
+    }
+}
+
+.controls {
+    padding: 10px;
+    
+    .button-group {
+        display: flex;
+        margin-bottom: 10px;
+        
+        .control-btn {
+            flex: 1;
+            margin: 0 5px;
+            padding: 8px 0; // 增大点击区域
+            font-size: 14px;
+        }
     }
     
-    span {
-        width: 40px;
-        text-align: center;
-        font-size: 12px;
+    .progress-container {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        
+        span {
+            min-width: 50px;
+            font-size: 12px;
+        }
+        
+        nz-slider {
+            flex: 1;
+            margin: 0 10px;
+        }
+    }
+    
+    nz-slider {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    // 超小屏幕调整
+    .three-container {
+        height: 35vh;
+    }
+    
+    .controls {
+        padding: 5px;
+        
+        .control-btn {
+            font-size: 12px;
+        }
     }
 }
