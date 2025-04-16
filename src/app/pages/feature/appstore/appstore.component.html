@@ -37,7 +37,15 @@
             <h4 style="margin: 8px 0; font-weight: 500">{{ app.name }}</h4>
             <p style="color: #666; margin-bottom: 16px">{{ app.description }}</p>
             <div style="display: flex; gap: 8px">
-                <button nz-button nzType="primary" *ngIf="!isEditMode" style="flex: 1">下载</button>
+                <button
+                    nz-button
+                    nzType="primary"
+                    *ngIf="!isEditMode"
+                    style="flex: 1"
+                    (click)="downLoad(app)"
+                >
+                    下载
+                </button>
                 <button
                     nz-button
                     nzType="primary"
@@ -60,3 +68,34 @@
         </nz-card>
     </div>
 </div>
+
+<!-- 添加或修改应用 -->
+<nz-modal
+    [(nzVisible)]="addAppModalIfy.visible"
+    [nzTitle]="addAppModalIfy.title"
+    (nzOnCancel)="addAppModalIfy.handleCancel()"
+    (nzOnOk)="addAppModalIfy.handleOk()"
+>
+    <ng-container *nzModalContent>
+        <form nz-form [formGroup]="addAppModalIfy.form">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="请输入应用名称!">
+                    <nz-input-group nzPrefixIcon="appstore">
+                        <input formControlName="name" nz-input placeholder="请输入应用名称" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="请输入应用描述!">
+                    <nz-input-group nzPrefixIcon="appstore">
+                        <input
+                            formControlName="description"
+                            nz-input
+                            placeholder="请输入应用描述"
+                        />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>

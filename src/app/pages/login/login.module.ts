@@ -7,13 +7,13 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { LoadingComponent } from '@src/app/components/loading/loading.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { LoadingModule } from '@src/app/components/loading/loading.module';
 
 const routes: Routes = [{ path: '', component: LoginComponent }];
 
 @NgModule({
-    declarations: [LoginComponent, LoadingComponent],
+    declarations: [LoginComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -23,6 +23,7 @@ const routes: Routes = [{ path: '', component: LoginComponent }];
         NzButtonModule,
         NzLayoutModule,
         NzModalModule,
+        LoadingModule,
     ],
 })
 export class LoginModule {}

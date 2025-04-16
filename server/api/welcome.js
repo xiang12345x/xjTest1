@@ -51,6 +51,11 @@ router.get('/userInfo', async (req, res) => {
         res.status(200).json({ success: true, data: userData });
     } catch (err) {
         console.error('Get user info error:', err);
+        if (err.name === 'TokenExpiredError') {
+            return res
+                .status(401)
+                .json({ code: 401, success: false, message: 'Token已过期，请重新登录' });
+        }
         res.status(500).json({ success: false, message: 'Server error' });
     }
 });
@@ -81,7 +86,7 @@ router.post('/updateUser', async (req, res) => {
         console.error('Update user error:', err);
         if (err.name === 'TokenExpiredError') {
             return res
-                .status(200)
+                .status(401)
                 .json({ code: 401, success: false, message: 'Token已过期，请重新登录' });
         }
         res.status(500).json({ success: false, message: 'Server error' });

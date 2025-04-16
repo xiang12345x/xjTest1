@@ -22,6 +22,7 @@ export class AppstoreComponent implements OnInit {
     apps: App[] = [
         { name: '应用1', description: '这是一个示例应用', url: 'assets/background/7.jpeg' },
         { name: '应用2', description: '这是另一个示例应用', url: 'assets/background/bg1.jpg' },
+        { name: '应用3', description: '这是一个测试应用', url: '' },
     ];
 
     /**添加、编辑应用弹框 */
@@ -29,7 +30,7 @@ export class AppstoreComponent implements OnInit {
         visible: false,
         title: '添加应用',
         // 添加应用表单
-        addForm: new FormGroup({
+        form: new FormGroup({
             name: new FormControl('', [Validators.required]),
             description: new FormControl('', [Validators.required]),
         }),
@@ -39,20 +40,20 @@ export class AppstoreComponent implements OnInit {
             if (data) {
                 this.addAppModalIfy.title = '编辑应用';
                 this.addAppModalIfy.edit = true;
-                this.addAppModalIfy.addForm.patchValue(data);
+                this.addAppModalIfy.form.patchValue(data);
             } else {
                 this.addAppModalIfy.title = '添加应用';
                 this.addAppModalIfy.edit = false;
-                this.addAppModalIfy.addForm.reset();
+                this.addAppModalIfy.form.reset();
             }
             this.addAppModalIfy.visible = true;
         },
         handleOk: () => {
-            if (this.addAppModalIfy.addForm.invalid) {
+            if (this.addAppModalIfy.form.invalid) {
                 this.message.error('表单未填写完整，请检查！');
                 return;
             }
-            const data = this.addAppModalIfy.addForm.value;
+            const data = this.addAppModalIfy.form.value;
             if (this.addAppModalIfy.edit) {
                 this.apps = this.apps.map(app =>
                     app.name === data.name ? { ...app, ...data } : app

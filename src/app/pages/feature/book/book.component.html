@@ -1,1 +1,63 @@
-<p>book works!</p>
+<div class="content">
+    <div class="left" [class.hidden]="!sidebarVisible">
+        <h2 class="text-xl font-bold mb-4 text-gray-800">书架</h2>
+        <nz-list>
+            <nz-list-item
+                *ngFor="let book of books"
+                class="hover:bg-gray-100 cursor-pointer rounded-md mb-2"
+                (click)="selectBook(book)"
+            >
+                <nz-list-item-meta
+                    [nzTitle]="book.title + '(点击书名，隐藏/显示目录)'"
+                    [nzAvatar]="book.cover"
+                >
+                </nz-list-item-meta>
+            </nz-list-item>
+        </nz-list>
+        <!-- 新增章节导航 -->
+        <h2 class="text-xl font-bold mb-4">目录</h2>
+        <div *ngIf="selectedBook" class="chapter-list mb-4">
+            <nz-list>
+                <nz-list-item
+                    *ngFor="let chapter of chapters; let i = index"
+                    [class.bg-blue-100]="i === currentChapterIndex"
+                    class="hover:bg-gray-100 cursor-pointer py-2 px-4 border-b"
+                    (click)="jumpToChapter(i)"
+                >
+                    <div class="truncate">{{ chapter.title }}</div>
+                </nz-list-item>
+            </nz-list>
+        </div>
+    </div>
+    <div class="right">
+        <div class="book-title">
+            <button nz-button nzType="default" (click)="toggleSidebar()" style="margin-right: 10px">
+                {{ sidebarVisible ? '隐藏书架' : '显示书架' }}
+            </button>
+            <label class="ml-2 text-gray-700">字体大小:</label>
+            <nz-slider [(ngModel)]="fontSize" [nzMin]="12" [nzMax]="32" class="w-48"></nz-slider>
+        </div>
+        <nz-card class="shadow-lg overflow-y-auto">
+            <div class="prose max-w-none" [style.fontSize.px]="fontSize">
+                <pre class="whitespace-pre-wrap font-sans">
+    {{ chapters[currentChapterIndex]?.content }}
+                </pre>
+            </div>
+
+            <div class="flex justify-between mt-4">
+                <button nz-button (click)="prevChapter()" [disabled]="currentChapterIndex <= 0">
+                    上一章
+                </button>
+                <button
+                    nz-button
+                    (click)="nextChapter()"
+                    [disabled]="currentChapterIndex >= chapters.length - 1"
+                >
+                    下一章
+                </button>
+            </div>
+        </nz-card>
+    </div>
+</div>
+
+<xj-loading [loading]="loading" [loadingText]="loadingText"></xj-loading>
