@@ -130,7 +130,7 @@ export class BookComponent implements OnInit {
         this.sidebarVisible = !this.sidebarVisible;
     }
 
-    async selectBook(book: Book) {
+    selectBook(book: Book) {
         if (this.selectedBook === book) {
             this.selectedBook = null;
             return;

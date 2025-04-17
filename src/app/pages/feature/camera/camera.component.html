@@ -1,1 +1,16 @@
-<p>camera works!</p>
+<button nz-button nzType="primary" (click)="print()">打开浏览器的打印模式</button>
+
+<div class="camera-container">
+    <video #videoElement autoplay playsinline></video>
+    <canvas #canvasElement style="display: none"></canvas>
+
+    <div class="controls">
+        <button nz-button nzType="primary" (click)="startCamera()">打开摄像头</button>
+        <button nz-button nzType="default" (click)="stopCamera()">关闭摄像头</button>
+        <button nz-button nzType="primary" (click)="capture()">拍照</button>
+    </div>
+
+    <div class="preview" *ngIf="photoUrl">
+        <img [src]="photoUrl" alt="拍摄的照片" />
+    </div>
+</div>
