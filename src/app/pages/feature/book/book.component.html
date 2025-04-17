@@ -16,7 +16,7 @@
         </nz-list>
         <!-- 新增章节导航 -->
         <h2 class="text-xl font-bold mb-4">目录</h2>
-        <div *ngIf="selectedBook" class="chapter-list mb-4">
+        <div [hidden]="!selectedBook" class="chapter-list mb-4">
             <nz-list>
                 <nz-list-item
                     *ngFor="let chapter of chapters; let i = index"

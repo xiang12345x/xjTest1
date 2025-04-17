@@ -26,9 +26,13 @@
             flex: 1;
             overflow: hidden;
             nz-card {
-                height: 450px;
+                height: calc(100vh - 360px);
                 overflow-y: auto;
             }
+        }
+        // 修正选择器位置和写法
+        .left.hidden + .right nz-card {
+            height: calc(100vh - 210px); // 隐藏书架后的高度
         }
   }
 }
