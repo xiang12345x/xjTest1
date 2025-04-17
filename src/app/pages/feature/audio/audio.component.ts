@@ -12,7 +12,7 @@ export class AudioComponent implements OnInit, OnDestroy {
     private camera!: THREE.PerspectiveCamera;
     private renderer!: THREE.WebGLRenderer;
     private objects: THREE.Mesh[] = [];
-    private currentIndex = 0;
+    currentIndex = 0;
     private rafId!: number;
     private isDragging = false;
     private previousMousePosition = { x: 0, y: 0 };
@@ -31,6 +31,13 @@ export class AudioComponent implements OnInit, OnDestroy {
         'assets/audio/是你 - 梦然.mp3',
         'assets/audio/我想更懂你 - 潘玮柏_苏芮.mp3',
         'assets/audio/下完这场雨 - 后弦.mp3',
+    ];
+    audioList = [
+        '明天，你好 - 牛奶咖啡',
+        '时光背面的我 - 刘至佳_韩瞳',
+        '是你 - 梦然',
+        '我想更懂你 - 潘玮柏_苏芮',
+        '下完这场雨 - 后弦',
     ];
     volume = 50;
     currentTime = 0; // 当前播放时间
@@ -97,13 +104,23 @@ export class AudioComponent implements OnInit, OnDestroy {
     }
 
     private playCurrentAudio(): void {
-        if (this.sound.playing()) {
+        if (this.sound) {
             this.sound.stop();
+            this.clearProgressTimer();
         }
         this.sound = new Howl({
             src: [this.audioFiles[this.currentIndex]],
             autoplay: true,
             volume: this.volume / 100,
+            onload: () => {
+                this.duration = this.sound.duration();
+            },
+            onplay: () => {
+                this.startProgressTimer();
+            },
+            onend: () => {
+                this.clearProgressTimer();
+            },
         });
     }
 

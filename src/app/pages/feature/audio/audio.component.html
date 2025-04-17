@@ -1,6 +1,7 @@
 <div class="view_scroll">
     <div class="three-container"></div>
     <div class="controls">
+        <h2>当前播放：{{ this.audioList[this.currentIndex] }}</h2>
         <div class="button-group">
             <button nz-button nzType="primary" (click)="prev()" class="control-btn">上一首</button>
             <button nz-button nzType="primary" (click)="next()" class="control-btn">下一首</button>
