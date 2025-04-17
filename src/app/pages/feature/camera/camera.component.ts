@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { renderAsync } from 'docx-preview';
 
 @Component({
     selector: 'xj-camera',
@@ -12,12 +13,33 @@ export class CameraComponent implements OnInit, OnDestroy {
     @ViewChild('canvasElement') canvasElement!: ElementRef;
 
     photoUrl: string | null = null;
+    wordContent: string | null = null;
     stream: MediaStream | null = null;
 
-    ngOnInit(): void {}
+    @ViewChild('previewContainer') previewContainer!: ElementRef;
 
-    ngOnDestroy() {
-        this.stopCamera();
+    async previewWord(event: any) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+            // 清空预览容器
+            this.previewContainer.nativeElement.innerHTML = '';
+
+            // 使用docx-preview渲染Word文档
+            await renderAsync(file, this.previewContainer.nativeElement, undefined, {
+                className: 'docx', // 自定义样式类名
+                inWrapper: true, // 包含包装容器
+                ignoreWidth: false,
+                ignoreHeight: false,
+                ignoreFonts: false,
+            });
+
+            // 隐藏纯文本预览
+            this.wordContent = null;
+        } catch (err) {
+            console.error('Word预览失败:', err);
+        }
     }
 
     async startCamera() {
@@ -57,5 +79,11 @@ export class CameraComponent implements OnInit, OnDestroy {
     }
     print() {
         window.print();
+    }
+
+    ngOnInit(): void {}
+
+    ngOnDestroy() {
+        this.stopCamera();
     }
 }

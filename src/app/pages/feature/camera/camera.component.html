@@ -1,16 +1,30 @@
-<button nz-button nzType="primary" (click)="print()">打开浏览器的打印模式</button>
+<div class="main">
+    <div class="camera-container">
+        <button nz-button nzType="primary" (click)="print()">打开浏览器的打印模式</button>
+        <video #videoElement autoplay playsinline></video>
+        <canvas #canvasElement style="display: none"></canvas>
 
-<div class="camera-container">
-    <video #videoElement autoplay playsinline></video>
-    <canvas #canvasElement style="display: none"></canvas>
+        <div class="controls">
+            <button nz-button nzType="primary" (click)="startCamera()">打开摄像头</button>
+            <button nz-button nzType="default" (click)="stopCamera()">关闭摄像头</button>
+            <button nz-button nzType="primary" (click)="capture()">拍照</button>
+        </div>
 
-    <div class="controls">
-        <button nz-button nzType="primary" (click)="startCamera()">打开摄像头</button>
-        <button nz-button nzType="default" (click)="stopCamera()">关闭摄像头</button>
-        <button nz-button nzType="primary" (click)="capture()">拍照</button>
+        <div class="preview" *ngIf="photoUrl">
+            <img [src]="photoUrl" alt="拍摄的照片" />
+        </div>
     </div>
 
-    <div class="preview" *ngIf="photoUrl">
-        <img [src]="photoUrl" alt="拍摄的照片" />
+    <div class="word-preview">
+        <h2 class="font-bold text-lg">word文件预览</h2>
+        <input type="file" (change)="previewWord($event)" accept=".doc,.docx" />
+
+        <!-- 添加预览容器 -->
+        <div #previewContainer class="docx-preview-container"></div>
+
+        <!-- 保留纯文本预览作为备用 -->
+        <div *ngIf="wordContent" class="word-content">
+            <pre>{{ wordContent }}</pre>
+        </div>
     </div>
 </div>
