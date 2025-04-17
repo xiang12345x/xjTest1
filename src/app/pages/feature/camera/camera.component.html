@@ -20,7 +20,7 @@
         <input type="file" (change)="previewWord($event)" accept=".doc,.docx" />
 
         <!-- 添加预览容器 -->
-        <div #previewContainer class="docx-preview-container"></div>
+        <div #previewContainer class="docx-preview-container mobile-optimized"></div>
 
         <!-- 保留纯文本预览作为备用 -->
         <div *ngIf="wordContent" class="word-content">

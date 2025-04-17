@@ -118,16 +118,27 @@
 
         .word-preview {
             margin-top: 20px;
-            opacity: 0;
+            width: calc(100% - 40px);
             
             input[type="file"] {
               margin-bottom: 15px;
             }
+
+            .docx-preview-container {
+                width: 80vw;
+                height: 80vh;
+                overflow: auto;
+                border: 1px solid #ddd;
+                background: white;
+                // 强制重置docx的样式
+                .docx {
+                    padding: 20px !important;
+                }
+              }
             
             .word-content {
               border: 1px solid #ddd;
               padding: 15px;
-              width: 100%;
               background: white;
               
               pre {

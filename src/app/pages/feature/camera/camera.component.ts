@@ -26,13 +26,27 @@ export class CameraComponent implements OnInit, OnDestroy {
             // 清空预览容器
             this.previewContainer.nativeElement.innerHTML = '';
 
+            // 添加强制样式重置
+            this.previewContainer.nativeElement.className = 'docx-preview-container';
+
+            // 添加强制样式
+            setTimeout(() => {
+                const docxElements =
+                    this.previewContainer.nativeElement.querySelectorAll('.docx-wrapper, .docx');
+                docxElements.forEach((el: any) => {
+                    el.style.padding = '20px';
+                    el.style.width = '100%';
+                });
+            }, 100);
+
             // 使用docx-preview渲染Word文档
             await renderAsync(file, this.previewContainer.nativeElement, undefined, {
-                className: 'docx', // 自定义样式类名
-                inWrapper: true, // 包含包装容器
-                ignoreWidth: false,
-                ignoreHeight: false,
-                ignoreFonts: false,
+                className: 'docx',
+                inWrapper: false,
+                ignoreWidth: true, // 忽略原始宽度
+                ignoreHeight: true, // 忽略原始高度
+                breakPages: true, // 启用分页
+                experimental: true, // 启用实验性优化
             });
 
             // 隐藏纯文本预览
