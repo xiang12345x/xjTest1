@@ -1,4 +1,5 @@
 <div class="view_scroll content">
+    <canvas id="c1" width="400" height="300"></canvas>
     <div class="center">
         <h1 class="title">{{ title }}</h1>
         <div class="avatar-upload" style="margin: 10px 0" *ngIf="edit">
@@ -71,8 +72,10 @@
                 </nz-form-control>
             </nz-form-item>
 
-            <button *ngIf="edit" nz-button nzType="primary" type="submit">保存</button>
-            <button *ngIf="!edit" nz-button nzType="primary" (click)="editForm()">编辑</button>
+            <div style="display: flex; justify-content: center">
+                <button *ngIf="edit" nz-button nzType="primary" type="submit">保存</button>
+                <button *ngIf="!edit" nz-button nzType="primary" (click)="editForm()">编辑</button>
+            </div>
         </form>
     </div>
 </div>

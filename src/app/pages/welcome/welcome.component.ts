@@ -211,7 +211,6 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
             tooltip: {
                 trigger: 'item',
                 formatter: (data: any) => {
-                    console.log(data);
                     return `${data.name}的人数为: ${data.value}万人`;
                 },
             },
