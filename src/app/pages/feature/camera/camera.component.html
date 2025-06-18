@@ -12,7 +12,9 @@
     <h2 class="font-bold text-lg">动画测试</h2>
     <div class="card" style="opacity: 1; transform: translateY(0)">
       <button nz-button class="btn1 mr-2" (click)="btnIfy.btn1Click()">按钮点击动画</button>
-      <button nz-button class="btn2 mr-2 bg-yellow-300">创建自定义贝塞尔曲线</button>
+      <button nz-button class="btn2 mr-2" style="z-index: 1" (click)="btnIfy.btn2Click()">创建自定义贝塞尔曲线</button>
+      <button nz-button class="btn3 mr-2" (click)="btnIfy.btn3Click()">卡片入场效果</button>
+      <button nz-button class="btn4 mr-2" (click)="btnIfy.btn4Click()">进度条加载</button>
     </div>
     <h2 class="font-bold text-lg">进度条加载</h2>
     <div class="progress-bar"></div>

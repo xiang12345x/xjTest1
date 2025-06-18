@@ -31,6 +31,43 @@ export class CameraComponent implements OnInit, OnDestroy {
         repeat: 1, // 重复1次
       });
     },
+    btn2Click: () => {
+      // 创建自定义贝塞尔曲线
+      gsap.registerEase('myEase', 'M0,0 C0.12,0 0.25,1 1,1' as any);
+
+      gsap.to('.btn2', {
+        x: 500,
+        ease: 'myEase',
+        yoyo: true, // 返回原位置
+        repeat: 1, // 重复1次
+        duration: 2,
+      });
+    },
+    btn3Click: () => {
+      /**卡片入场效果 */
+      gsap.from('.card', {
+        duration: 1.5,
+        opacity: 0, // 从完全透明到当前透明度
+        y: 100, // 从下方100px移动到当前位置
+        rotation: -15, // 初始旋转角度
+        ease: 'elastic.out(1, 0.3)',
+      });
+    },
+    btn4Click: () => {
+      // 进度条加载
+      gsap.fromTo(
+        '.progress-bar',
+        { width: '0%' }, // 起始状态
+        {
+          width: '100%', // 结束状态
+          duration: 3,
+          ease: 'power1.inOut',
+          onUpdate: function () {
+            console.log(this.progress()); // 输出动画进度
+          },
+        }
+      );
+    },
   };
 
   async previewWord(event: any) {
@@ -110,36 +147,13 @@ export class CameraComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    /**卡片入场效果 */
-    gsap.from('.card', {
-      duration: 1.5,
-      opacity: 0, // 从完全透明到当前透明度
-      y: 100, // 从下方100px移动到当前位置
-      rotation: -15, // 初始旋转角度
-      ease: 'elastic.out(1, 0.3)',
-    });
-
-    // 进度条加载
-    gsap.fromTo(
-      '.progress-bar',
-      { width: '0%' }, // 起始状态
-      {
-        width: '100%', // 结束状态
-        duration: 3,
-        ease: 'power1.inOut',
-        onUpdate: function () {
-          console.log(this.progress()); // 输出动画进度
-        },
-      }
-    );
-
-    // 创建自定义贝塞尔曲线
-    gsap.registerEase('myEase', 'M0,0 C0.12,0 0.25,1 1,1' as any);
-
-    gsap.to('.btn2', {
-      x: 500,
-      ease: 'myEase',
-      duration: 2,
+    ScrollTrigger.create({
+      trigger: '.progress-bar', // 触发元素
+      start: 'top center', // 开始位置
+      end: 'bottom top', // 结束位置
+      markers: true, // 显示调试标记
+      toggleActions: 'play pause resume pause', // 滚动行为
+      scrub: 1, // 动画跟随滚动（秒）
     });
   }
 
