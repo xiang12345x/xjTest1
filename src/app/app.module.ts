@@ -33,6 +33,8 @@ import {
     CustomerServiceTwoTone,
     MenuOutline,
     MenuFoldOutline,
+    MobileOutline,
+    MessageOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -57,6 +59,8 @@ const icons: IconDefinition[] = [
     CustomerServiceTwoTone,
     MenuOutline,
     MenuFoldOutline,
+    MobileOutline,
+    MessageOutline,
 ];
 
 @NgModule({

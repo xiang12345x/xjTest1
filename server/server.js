@@ -61,6 +61,6 @@ mongoose
     });
 
 // 测试接口
-app.get('/test', async (req, res) => {
-    res.send('test');
-});
+// app.get('/test', async (req, res) => {
+//     res.send('test');
+// });

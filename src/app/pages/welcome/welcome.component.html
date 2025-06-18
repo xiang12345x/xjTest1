@@ -2,7 +2,7 @@
     <nz-header class="header">
         <div class="header-content">
             <div class="header-title">
-                <a href="https://baidu.com" target="_blank">
+                <a routerLink="/welcome/home" target="_blank">
                     <img class="avatar" src="assets/logo/logo.svg" alt="logo" />
                 </a>
                 <span>The creator of one project is Xj</span>
@@ -32,18 +32,8 @@
                 <div class="pd_10 scroll-auto item">
                     <h1 class="title italic">功能</h1>
                     <div class="function">
-                        <div
-                            class="function_item"
-                            *ngFor="let item of featureIfy.data"
-                            (click)="featureIfy.skip(item)"
-                        >
-                            <i
-                                nz-icon
-                                [nzType]="item.icon"
-                                nzTheme="twotone"
-                                [nzTwotoneColor]="'#6973b8'"
-                                style="font-size: 48px"
-                            ></i>
+                        <div class="function_item" *ngFor="let item of featureIfy.data" (click)="featureIfy.skip(item)">
+                            <i nz-icon [nzType]="item.icon" nzTheme="twotone" [nzTwotoneColor]="'#6973b8'" style="font-size: 48px"></i>
                             <span class="title italic">{{ item.name }}</span>
                         </div>
                     </div>

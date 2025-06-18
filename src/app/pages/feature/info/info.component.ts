@@ -93,11 +93,7 @@ export class InfoComponent implements OnInit {
         this.ctx.restore();
         this.ctx.save();
         // 绘制分针
-        this.ctx.rotate(
-            ((2 * Math.PI) / 12) * hour +
-                ((2 * Math.PI) / 720) * min +
-                ((2 * Math.PI) / 3600 / 12) * sec
-        );
+        this.ctx.rotate(((2 * Math.PI) / 12) * hour + ((2 * Math.PI) / 720) * min + ((2 * Math.PI) / 3600 / 12) * sec);
         this.ctx.beginPath();
         this.ctx.moveTo(-7.5, 0);
         this.ctx.lineTo(55, 0);

@@ -7,11 +7,7 @@
                 <span class="title">头像上传：</span>
                 <input type="file" id="inputId" (change)="uploadAvator($event)" accept="image/*" />
                 <ng-container *ngIf="avatarUrl; else avatarTemp">
-                    <img
-                        [src]="avatarUrl"
-                        id="img"
-                        style="width: 50px; height: 50px; border-radius: 50%"
-                    />
+                    <img [src]="avatarUrl" id="img" style="width: 50px; height: 50px; border-radius: 50%" />
                 </ng-container>
                 <ng-template #avatarTemp>暂无数据</ng-template>
             </div>
@@ -23,23 +19,15 @@
                         <input type="text" nz-input formControlName="username" placeholder="姓名" />
                     </nz-input-group>
                     <ng-template #nameErrorTpl let-control>
-                        <ng-container *ngIf="control.hasError('required')">
-                            请输入姓名
-                        </ng-container>
+                        <ng-container *ngIf="control.hasError('required')"> 请输入姓名 </ng-container>
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-control [nzErrorTip]="dateErrorTpl">
-                    <nz-date-picker
-                        style="width: 100%"
-                        formControlName="date"
-                        placeholder="日期"
-                    ></nz-date-picker>
+                    <nz-date-picker style="width: 100%" formControlName="date" placeholder="日期"></nz-date-picker>
                     <ng-template #dateErrorTpl let-control>
-                        <ng-container *ngIf="control.hasError('required')">
-                            请输入日期
-                        </ng-container>
+                        <ng-container *ngIf="control.hasError('required')"> 请输入日期 </ng-container>
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
@@ -49,9 +37,7 @@
                         <input type="text" nz-input formControlName="address" placeholder="地址" />
                     </nz-input-group>
                     <ng-template #addressErrorTpl let-control>
-                        <ng-container *ngIf="control.hasError('required')">
-                            请输入地址
-                        </ng-container>
+                        <ng-container *ngIf="control.hasError('required')"> 请输入地址 </ng-container>
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
@@ -62,12 +48,8 @@
                         <input type="email" nz-input formControlName="email" placeholder="邮箱" />
                     </nz-input-group>
                     <ng-template #emailErrorTpl let-control>
-                        <ng-container *ngIf="control.hasError('required')">
-                            请输入邮箱
-                        </ng-container>
-                        <ng-container *ngIf="control.hasError('email')">
-                            请输入有效的邮箱地址
-                        </ng-container>
+                        <ng-container *ngIf="control.hasError('required')"> 请输入邮箱 </ng-container>
+                        <ng-container *ngIf="control.hasError('email')"> 请输入有效的邮箱地址 </ng-container>
                     </ng-template>
                 </nz-form-control>
             </nz-form-item>
